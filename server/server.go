@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"github.com/emersion/go-smtp"
 	"github.com/gorilla/websocket"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"golang.org/x/sync/errgroup"
 	"heckel.io/ntfy/auth"
 	"heckel.io/ntfy/util"
@@ -262,7 +263,10 @@ func (s *Server) handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleInternal(w http.ResponseWriter, r *http.Request, v *visitor) error {
-	if r.Method == http.MethodGet && r.URL.Path == "/" {
+	if r.URL.Path == "/metrics" {
+		promhttp.Handler().ServeHTTP(w, r)
+		return nil
+	} else if r.Method == http.MethodGet && r.URL.Path == "/" {
 		return s.handleHome(w, r)
 	} else if r.Method == http.MethodGet && r.URL.Path == "/example.html" {
 		return s.handleExample(w, r)
