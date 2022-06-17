@@ -3,6 +3,8 @@ You can use the Web UI to subscribe to topics as well. If you do, and you keep t
 pop up as desktop notifications**. Simply type in the topic name and click the *Subscribe* button. The browser will 
 keep a connection open and listen for incoming notifications.
 
+The Web UI is available on `https://the-ntfy-server.domain/app`, for ntfy.sh, it's [https://ntfy.sh/app](https://ntfy.sh/app)
+
 To learn how to send messages, check out the [publishing page](../publish.md).
 
 <div id="web-screenshots" class="screenshots">
